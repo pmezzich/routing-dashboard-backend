@@ -1,1 +1,1 @@
-web: python3 -m gunicorn bot_server:app
+web: /opt/render/.python3/bin/gunicorn bot_server:app

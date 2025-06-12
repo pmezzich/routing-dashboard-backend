@@ -1,1 +1,1 @@
-web: python3 -m gunicorn bot_server:app
+web: ~/.venv/bin/gunicorn bot_server:app

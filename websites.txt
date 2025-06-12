@@ -1,2 +1,8 @@
+https://prebid.org/
 https://prebid.org/calendar/
+https://www.prebidsummit.org/
+https://prebid.org/category/blog/
+https://prebid.org/category/news/
 https://prebid.org/about/
+https://prebid.org/about/#faq
+https://prebid.org/board-of-directors/

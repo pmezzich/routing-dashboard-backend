@@ -1,0 +1,7 @@
+flask
+flask-cors
+openai
+tiktoken
+requests
+python-dotenv
+beautifulsoup4

@@ -5,3 +5,4 @@ tiktoken
 requests
 python-dotenv
 beautifulsoup4
+gunicorn

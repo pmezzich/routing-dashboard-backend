@@ -103,7 +103,7 @@
       input.value = "";
 
       try {
-        const res = await fetch("/query", {
+        const res = await fetch("https://routing-dashboard-backend.onrender.com/query", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question })

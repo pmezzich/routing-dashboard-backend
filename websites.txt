@@ -6,3 +6,6 @@ https://prebid.org/category/news/
 https://prebid.org/about/
 https://prebid.org/about/#faq
 https://prebid.org/board-of-directors/
+https://prebid.org/pricing/
+https://prebid.org/wp-content/uploads/2024/12/FINAL-Prebid-Membership-Agreement-12-11-24.pdf
+https://prebid.org/wp-content/uploads/2024/12/FINAL-Prebid-Bylaws-12-11-24.pdf

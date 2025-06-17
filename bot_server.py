@@ -5,26 +5,19 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-
 @app.route('/query', methods=['POST'])
 def query():
+    data = request.get_json()
+    message = data.get("message", "")
+    if not message:
+        return jsonify({"error": "No question provided."}), 400
+
     try:
-        data = request.get_json(force=True)
-        print("DEBUG /query received JSON:", data)
-
-        question = data.get("question", "")
-        if not question:
-            print("DEBUG /query missing question")
-            return jsonify({"error": "No question provided."}), 400
-
         websites = load_websites()
-        answer = ask_chatgpt(question, websites, use_history=True)
+        answer = ask_chatgpt(message, websites, use_history=True)
         return jsonify({"answer": answer})
-
     except Exception as e:
-        print("ERROR in /query:", e)
         return jsonify({"error": str(e)}), 500
-
 
 @app.route("/chat")
 def chat_page():

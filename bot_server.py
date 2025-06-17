@@ -61,7 +61,7 @@ def chat_page():
           const res = await fetch("/query", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question: q })
+            body: JSON.stringify({ message: q })
           });
           const data = await res.json();
           const a = data.answer || data.error || "No response";

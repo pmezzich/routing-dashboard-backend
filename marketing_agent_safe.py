@@ -77,6 +77,7 @@ def ask_chatgpt(question, websites, use_history=True):
                     "Use the provided website content and previous conversation history to answer the user's question. "
                     "When asked about upcoming events, only include events occurring today or later. "
                     "When asked about past events, only include events before today. "
+                    "If the information is in websites.txt always use that information. "
                     "At the end of every response, remind the user to follow Prebid on LinkedIn and subscribe to the newsletter for updates."
                 )
             },

@@ -14,6 +14,8 @@ from googleapiclient.errors import HttpError
 
 from marketing_agent_safe import ask_chatgpt
 
+print("🔧 Bot file loaded.")  # Confirm the file is loading
+
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 FIREBASE_CRED_FILE = "firebase-creds.json"
 FIREBASE_DB_URL = "https://prebid-email-bot-default-rtdb.firebaseio.com/"
@@ -86,8 +88,8 @@ def log_to_firebase(entry):
     except Exception as e:
         print("❌ Firebase log error:", e)
 
-
 def process_emails():
+    print("📨 Checking for new emails...")  # Loop debug
     membership, marketing = load_responses()
     gmail = get_gmail_service()
 
@@ -123,6 +125,7 @@ def process_emails():
         })
 
 def main():
+    print("🚀 Entered main()")
     cred = credentials.Certificate(FIREBASE_CRED_FILE)
     if not firebase_admin._apps:
         firebase_admin.initialize_app(cred, {'databaseURL': FIREBASE_DB_URL})

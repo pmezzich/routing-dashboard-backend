@@ -79,8 +79,13 @@ def send_reply(service, message_id, to_email, subject, body_text):
     service.users().messages().modify(userId="me", id=message_id, body={"removeLabelIds": ["UNREAD"]}).execute()
 
 def log_to_firebase(entry):
-    ref = db.reference("/emails")
-    ref.push(entry)
+    try:
+        ref = db.reference("/emails")
+        ref.push(entry)
+        print("✅ Logged to Firebase:", entry)
+    except Exception as e:
+        print("❌ Firebase log error:", e)
+
 
 def process_emails():
     membership, marketing = load_responses()

@@ -16,7 +16,7 @@ from marketing_agent_safe import ask_chatgpt
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 FIREBASE_CRED_FILE = "firebase-creds.json"
-FIREBASE_DB_URL = "https://prebid-email-bot.firebaseio.com/"
+FIREBASE_DB_URL = "https://prebid-email-bot-default-rtdb.firebaseio.com/"
 TOKEN_FILE = "token.pickle"
 RESPONSES_DIR = "responses"
 

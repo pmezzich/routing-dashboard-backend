@@ -1,4 +1,3 @@
-
 import os
 import json
 import time
@@ -14,7 +13,6 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from marketing_agent_safe import ask_chatgpt
-from responses import marketing_responses, membership_responses
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 FIREBASE_CRED_FILE = "firebase-creds.json"
@@ -130,7 +128,7 @@ def main():
             process_emails()
         except Exception as e:
             print("❌ Error:", e)
-        time.sleep(60)  # wait 5 minutes
+        time.sleep(60)
 
 if __name__ == "__main__":
     main()

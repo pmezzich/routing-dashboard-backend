@@ -14,7 +14,7 @@ from googleapiclient.errors import HttpError
 
 from marketing_agent_safe import ask_chatgpt
 
-print("🔧 Bot file loaded.")  # Confirm the file is loading
+print("🔧 Bot file loaded.", flush=True)
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 FIREBASE_CRED_FILE = "firebase-creds.json"
@@ -82,14 +82,15 @@ def send_reply(service, message_id, to_email, subject, body_text):
 
 def log_to_firebase(entry):
     try:
+        print("📡 Attempting to log to Firebase...", flush=True)
         ref = db.reference("/emails")
         ref.push(entry)
-        print("✅ Logged to Firebase:", entry)
+        print("✅ Logged to Firebase:", entry, flush=True)
     except Exception as e:
-        print("❌ Firebase log error:", e)
+        print("❌ Firebase log error:", e, flush=True)
 
 def process_emails():
-    print("📨 Checking for new emails...")  # Loop debug
+    print("📨 Checking for new emails...", flush=True)
     membership, marketing = load_responses()
     gmail = get_gmail_service()
 
@@ -125,17 +126,21 @@ def process_emails():
         })
 
 def main():
-    print("🚀 Entered main()")
-    cred = credentials.Certificate(FIREBASE_CRED_FILE)
-    if not firebase_admin._apps:
-        firebase_admin.initialize_app(cred, {'databaseURL': FIREBASE_DB_URL})
+    print("🚀 Entered main()", flush=True)
+    try:
+        cred = credentials.Certificate(FIREBASE_CRED_FILE)
+        if not firebase_admin._apps:
+            firebase_admin.initialize_app(cred, {'databaseURL': FIREBASE_DB_URL})
+        print("✅ Firebase initialized", flush=True)
+    except Exception as e:
+        print("❌ Firebase init failed:", e, flush=True)
 
-    print("📬 Email bot started. Checking inbox every 1 minute...")
+    print("📬 Email bot started. Checking inbox every 1 minute...", flush=True)
     while True:
         try:
             process_emails()
         except Exception as e:
-            print("❌ Error:", e)
+            print("❌ Error during loop:", e, flush=True)
         time.sleep(60)
 
 if __name__ == "__main__":
